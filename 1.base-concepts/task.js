@@ -13,8 +13,12 @@ function solveEquation(a, b, c) {
     x2 = (-b - Math.sqrt(discriminant) ) / (2 * a);
   }
 
-  if (x1 !== undefined) { arr.push(x1); }
-  if (x2 !== undefined) { arr.push(x2); }
+  if (x1 !== undefined) {
+    arr.push(x1);
+  }
+  if (x2 !== undefined) {
+    arr.push(x2);
+  }
 
   return arr; // array
 }
@@ -57,7 +61,6 @@ function calculateTotalMortgage(percent, contribution, amount, date) {
 
     let numberOfMonths = monthDiff(new Date(), new Date(date));  // количество месяцев
     let payment = loanBody * (p + (p / (((1 + p) ** numberOfMonths) - 1)));  // платеж
-    // totalAmount = Math.floor((payment * numberOfMonths + contribution) * 100) / 100 ;  // платеж * кол-во месяцев + Начальный взнос
     totalAmount = +(payment * numberOfMonths).toFixed(2) ;  // платеж * кол-во месяцев + Начальный взнос
 
     console.log(totalAmount);
