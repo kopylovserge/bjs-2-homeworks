@@ -51,12 +51,14 @@ function calculateTotalMortgage(percent, contribution, amount, date) {
   } else {
     
     percent = parseFloat(percent);
+    const p = percent / 12 / 100;
     contribution = parseFloat(contribution);
     amount = parseFloat(amount);
 
     let numberOfMonths = monthDiff(new Date(), new Date(date));  // количество месяцев
-    let payment = loanBody * (percent / 12 + (percent / 12 / (((1 + percent / 12) ** numberOfMonths) - 1)));  // платеж
-    totalAmount = Math.floor((payment * numberOfMonths + contribution) * 100) / 100 ;  // платеж * кол-во месяцев + Начальный взнос
+    let payment = loanBody * (p + (p / (((1 + p) ** numberOfMonths) - 1)));  // платеж
+    // totalAmount = Math.floor((payment * numberOfMonths + contribution) * 100) / 100 ;  // платеж * кол-во месяцев + Начальный взнос
+    totalAmount = +(payment * numberOfMonths).toFixed(2) ;  // платеж * кол-во месяцев + Начальный взнос
 
     console.log(totalAmount);
     return totalAmount;
