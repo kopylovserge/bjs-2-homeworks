@@ -31,20 +31,20 @@ function worker(arr) {
 function makeWork(arrOfArr, func) {
   let max = func(arrOfArr[0]);
 
-  for (var i = 0; i < arrOfArr.length; i++) {
-    if (func(arrOfArr[i]) > max) {
-      max = func(arrOfArr[i]);
+  for (let i = 0; i < arrOfArr.length; i++) {
+    let varTemp = func(arrOfArr[i]);
+    if (varTemp > max) {
+      max = varTemp;
     }
   }
   
   return max;
 }
 
+makeWork([[0, 0, 0], [-1, -100]], worker)
+
 // Задание 3
 function worker2(arr) {
-  let delta;
   let maxmin = getArrayParams(arr);
-  delta = Math.abs(maxmin.max - maxmin.min)
-  
-  return delta;
+  return Math.abs(maxmin.max - maxmin.min);
 }
