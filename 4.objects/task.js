@@ -47,3 +47,7 @@ Student.prototype.exclude = function(reason) {
   }
   this.excluded = reason;
 }
+
+// let student1 = new Student("Tony", "male", 37);
+// student1.setSubject("Algebra");
+// student1.addMark(5);
