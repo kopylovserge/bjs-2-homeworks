@@ -2,16 +2,15 @@ function parseCount(variable) {
     let result = Number.parseInt(variable);
     if (isNaN(result)) {
         throw new Error("Невалидное значение");
-    } else {
-        return result;
     }
+    return result;
 }
 
 function validateCount(variable) {
     try {
         return parseCount(variable);
     } catch(err) {
-        console.log(err);
+        return err;
     }
 }
 
@@ -27,18 +26,18 @@ class Triangle {
     }
 
     getPerimeter() {
-        try {
+        if (this.side1 !== 0) {
             return this.side1 + this.side2 + this.side3;
-        } catch(err) {
+        } else {
             return "Ошибка! Треугольник не существует";
         }
     }
 
     getArea() {
-        try {
+        if (this.side1 !== 0) {
             let p = this.getPerimeter() / 2;
             return Number(Math.sqrt(p * (p - this.side1) * (p - this.side2) * (p - this.side3)).toFixed(3));
-        } catch(err) {
+        } else {
             return "Ошибка! Треугольник не существует";
         }
     }
@@ -49,5 +48,6 @@ function getTriangle(side1, side2, side3) {
         return new Triangle(side1, side2, side3);
     } catch(err) {
         console.log(err);
+        return new Triangle(0, 0, 0);
     }
 }
