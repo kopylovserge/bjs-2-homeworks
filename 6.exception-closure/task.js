@@ -26,20 +26,12 @@ class Triangle {
     }
 
     getPerimeter() {
-        if (this.side1 !== 0) {
-            return this.side1 + this.side2 + this.side3;
-        } else {
-            return "Ошибка! Треугольник не существует";
-        }
+        return this.side1 + this.side2 + this.side3;
     }
 
     getArea() {
-        if (this.side1 !== 0) {
-            let p = this.getPerimeter() / 2;
-            return Number(Math.sqrt(p * (p - this.side1) * (p - this.side2) * (p - this.side3)).toFixed(3));
-        } else {
-            return "Ошибка! Треугольник не существует";
-        }
+        let p = this.getPerimeter() / 2;
+        return Number(Math.sqrt(p * (p - this.side1) * (p - this.side2) * (p - this.side3)).toFixed(3));
     }
 }
 
@@ -48,6 +40,10 @@ function getTriangle(side1, side2, side3) {
         return new Triangle(side1, side2, side3);
     } catch(err) {
         console.log(err);
-        return new Triangle(0, 0, 0);
+        // возвращаем объект с двумя методами (не труегольник)
+        return {
+            getPerimeter: () => "Ошибка! Треугольник не существует",
+            getArea: () => "Ошибка! Треугольник не существует",
+          }
     }
 }
